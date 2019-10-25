@@ -1,3 +1,3 @@
 # Moto - Mock AWS Services
 
-Fork of https://github.com/spulec/moto/
+Fork of https://github.com/localstack/moto/
