@@ -478,9 +478,8 @@ class EventSourceMapping(BaseModel):
     def create_from_cloudformation_json(cls, resource_name, cloudformation_json,
                                         region_name):
         properties = cloudformation_json['Properties']
-        print('======properties'); import pprint; pprint.pprint(properties)
         function_name = properties['FunctionName'].split(':')[-1]
-        func = lambda_backends[region_name].get_function(function_name)
+        func = lambda_backends[region_name].get_function(function_name) or lambda_backends[region_name].get_function(properties['FunctionName'])
         spec = {
             'FunctionArn': func.function_arn,
             'EventSourceArn': properties['EventSourceArn'],
