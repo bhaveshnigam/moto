@@ -207,6 +207,8 @@ class CloudFormationResponse(BaseResponse):
 
     def describe_stack_events(self):
         stack_name = self._get_param('StackName')
+        print(stack_name)
+        stack_name = stack_name.split(':')[-1]
         stack = self.cloudformation_backend.get_stack(stack_name)
 
         template = self.response_template(DESCRIBE_STACK_EVENTS_RESPONSE)
